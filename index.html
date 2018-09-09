@@ -12,9 +12,13 @@
 
     <div id="root">
 
-        <input type="text" id="input" v-model="message">
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
 
-        <p>The value of the input is: {{ message }}</p>
+        <input type="text">
+
+        <button>Add Name</button>
 
     </div>
 
@@ -22,16 +26,24 @@
 
     <script>
     
-        let data = {
+        //let data = {
 
-            message: 'Hello World'
-        };
+        //    message: 'Hej hej'
+        //};
 
         new Vue({
 
             el: '#root',
 
-            data: data
+            data: {
+                
+                names: ['Joe', 'Mary', 'Jane', 'Jack']
+
+            },
+
+            mounted() {
+                alert('ready');
+            }
         })
 
     </script>
