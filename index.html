@@ -6,19 +6,32 @@
 
     <title></title>
 
+    <style type="text/css">
+        .colour-red { color: red; }
+    </style>
+
 </head>
 
 <body>
 
     <div id="root">
 
+        <input type="text" v-model='message'>
+        <p>this is the {{message}}</p>
+
         <ul>
             <li v-for="name in names" v-text="name"></li>
         </ul>
 
-        <input type="text">
+        <input id="input" type="text" v-model="newName">
 
-        <button>Add Name</button>
+        <button @click="addName">Add Name</button>
+
+        <p></p>
+
+        <button :title="title">Hover Over</button>
+
+        <button :class=""></button>
 
     </div>
 
@@ -36,13 +49,29 @@
             el: '#root',
 
             data: {
+
+                message: 'Hej hej',
+
+                newName: '',
                 
-                names: ['Joe', 'Mary', 'Jane', 'Jack']
+                names: ['Joe', 'Mary', 'Jane', 'Jack'],
+
+                title: 'my title'
+
+            },
+
+            methods: {
+
+                addName() {
+                    this.names.push(this.newName);
+
+                    this.newName = '';
+                }
 
             },
 
             mounted() {
-                alert('ready');
+                //alert('ready');
             }
         })
 
